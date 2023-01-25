@@ -12,6 +12,10 @@ export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     disabled = true;
 
+
+
+    // product: Product = this.model.getProductById(1) as Product;
+
     getClasses(id: number): string {
         let product = this.model.getProductById(id);
         if (product && product.price) {
@@ -21,7 +25,7 @@ export class ProductComponent {
         }
     }
 
-    getClassMap(id: number): Object{
+    getClassMap(id: number): Object {
         let product = this.model.getProductById(id);
         if (product && product.price) {
             return {
@@ -34,5 +38,20 @@ export class ProductComponent {
         }
     }
 
-    // product: Product = this.model.getProductById(1) as Product;
+    // color: string = 'red';
+    // color: string = this.model.getProductById(2).price <= 1000 ? "green" : "red";
+
+
+    getStyles(id: number) {
+        let product = this.model.getProductById(id);
+        if (product && product.price) {
+            return {
+                fontSize: "25px",
+                color: product.price <= 1000 ? "green" : "red"
+            }
+        } else {
+            return {};
+        }
+    }
+
 }

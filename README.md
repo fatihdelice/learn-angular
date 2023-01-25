@@ -45,3 +45,10 @@ ng g c component-name
     First product in catalog: {{model.getProductById(1)!.name}}
 </div>
 ```
+
+## Use Style Binding
+```html
+<span [style.color]="color">Angular</span>
+
+<span [ngStyle]="getStyles(1)">Angular</span>
+```
