@@ -20,9 +20,17 @@ ng serve --open
 ```shell
 ng generate component component-name
 ```
-OR
+or
 ```shell
 ng g c component-name
 ```
 
+## Use Property Binding
+```html
+<h2>{{product.name}}</h2>
+<h2 [textContent]="product.name"></h2>
+
+<img src="assets/img/{{product.imageUrl}}">
+<img [src]="'assets/img/' + product.imageUrl">
+```
 
