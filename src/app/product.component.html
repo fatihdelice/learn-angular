@@ -2,10 +2,26 @@
     There are {{model.getProducts().length}} products in the repository.
 </div>
 
-<div>
+<!-- <div>
     <h2>{{product.name}}</h2>
     <h2 [textContent]="product.name"></h2>
 
     <img src="assets/img/{{product.imageUrl}}">
     <img [src]="'assets/img/' + product.imageUrl">
+</div> -->
+
+<div [class]="getClasses(1)">
+    First product in catalog: {{model.getProductById(1)!.name}}
+</div>
+<div [class]="getClasses(2)">
+    Second product in catalog: {{model.getProductById(2)!.name}}
+</div>
+
+<div class="btn btn-primary" [class.disabled]="disabled">Submit</div>
+
+<div class="m-2 p-2" [ngClass]="getClassMap(1)">
+    First product in catalog: {{model.getProductById(1)!.name}}
+</div>
+<div class="m-2 p-2" [ngClass]="getClassMap(2)">
+    Second product in catalog: {{model.getProductById(2)!.name}}
 </div>

@@ -34,3 +34,14 @@ ng g c component-name
 <img [src]="'assets/img/' + product.imageUrl">
 ```
 
+
+## Use Class Binding
+```html
+<div [class]="getClasses(1)">
+    First product in catalog: {{model.getProductById(1)!.name}}
+</div>
+
+<div class="m-2 p-2" [ngClass]="getClassMap(1)">
+    First product in catalog: {{model.getProductById(1)!.name}}
+</div>
+```
