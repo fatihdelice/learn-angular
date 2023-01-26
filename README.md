@@ -350,3 +350,35 @@ OR If we want to use it with a string value
     </li>
 </ul>
 ```
+
+## NgTemplate
+```html
+<!-- component.html -->
+<ng-template [ngTemplateOutlet]="productList"></ng-template>
+
+<ng-template #productList>
+    <div class="m-5">
+        <ul class="list-group mt-2">
+            <li *ngFor="let product of model.getProducts()" class="list-group-item">
+                {{product.name}}
+            </li>
+        </ul>
+    </div>
+</ng-template>
+```
+OR
+```html
+<!-- component.html -->
+<ng-template [ngTemplateOutlet]="productList" [ngTemplateOutletContext]="{products: model.getPopularProducts()}"></ng-template>
+<ng-template [ngTemplateOutlet]="productList" [ngTemplateOutletContext]="{products: model.getLatestProducts()}"></ng-template>
+
+<ng-template #productList let-products="products">
+    <div class="m-5">
+        <ul class="list-group mt-2">
+            <li *ngFor="let product of products" class="list-group-item">
+                {{product.name}}
+            </li>
+        </ul>
+    </div>
+</ng-template>
+```
