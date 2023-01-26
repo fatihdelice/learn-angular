@@ -174,3 +174,65 @@ export class AppComponent {
     }
 }
 ```
+
+## Pipes
+```html
+<!-- component.html -->
+
+<h4>Lower-Upper-Title CasePipe</h4>
+<p>{{ title }}</p>
+<!-- Learn Angular -->
+<p>{{ title | lowercase }}</p>
+<!-- learn angular -->
+<p>{{ title | uppercase }}</p>
+<!-- LEARN ANGULAR -->
+<p>{{ title | titlecase }}</p>
+<!-- Learn Angular -->
+
+<h4>Date Pipe</h4>
+<p>{{ today }}</p>
+<!-- 1674741650486 -->
+<p>{{ today | date }}</p>
+<!-- Jan 26, 2023 -->
+<p>{{ today | date: 'fulldate' }}</p>
+<!-- full26PMte -->
+<p>{{ today | date: 'medium' }}</p>
+<!-- Jan 26, 2023, 5:00:50 PM -->
+<p>{{ today | date: 'short' }}</p>
+<!-- 1/26/23, 5:00 PM -->
+<p>{{ today | date: 'h:mm:ss' }}</p>
+<!-- 5:00:50 -->
+
+<h4>Decimal Pipe</h4>
+<p>{{ students }}</p>
+<!-- 21536 -->
+<p>{{ students | number }}</p>
+<!-- 21,536 -->
+<p>{{ price | number: '1.2-2' }}</p>
+<!-- 199.99 -->
+
+<h4>Currency Pipe</h4>
+<p>{{ price }}</p>
+<!-- 199.99 -->
+<p>{{ price | currency: 'EUR' }}</p>
+<!-- €199.99 -->
+
+<h4>Percent Pipe</h4>
+<p>{{ completed }}</p>
+<!-- 0.789 -->
+<p>{{ completed | percent }}</p>
+<!-- 79% -->
+```
+
+```ts
+// component.ts
+export class AppComponent {
+    ...
+    today: number = Date.now();
+    title: string = "Learn Angular";
+    students: number = 21536;
+    price: number = 199.99;
+    completed: number = 0.789;
+    ...
+}
+```

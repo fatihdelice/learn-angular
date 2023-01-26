@@ -35,3 +35,31 @@
 <!-- <input (keyup)="onKeyUp()">
 <input (keyup.enter)="onKeyUp($event)">
 <input #email (keyup.enter)="onKeyUp(email.value)"> -->
+
+
+<h4>Lower-Upper-Title CasePipe</h4>
+<p>{{ title }}</p>
+<p>{{ title | lowercase }}</p>
+<p>{{ title | uppercase }}</p>
+<p>{{ title | titlecase }}</p>
+
+<h4>Date Pipe</h4>
+<p>{{ today }}</p>
+<p>{{ today | date }}</p>
+<p>{{ today | date: 'fulldate' }}</p>
+<p>{{ today | date: 'medium' }}</p>
+<p>{{ today | date: 'short' }}</p>
+<p>{{ today | date: 'h:mm:ss' }}</p>
+
+<h4>Decimal Pipe</h4>
+<p>{{ students }}</p>
+<p>{{ students | number }}</p>
+<p>{{ price | number: '1.2-2' }}</p>
+
+<h4>Currency Pipe</h4>
+<p>{{ price }}</p>
+<p>{{ price | currency: 'EUR' }}</p>
+
+<h4>Percent Pipe</h4>
+<p>{{ completed }}</p>
+<p>{{ completed | percent }}</p>

@@ -12,6 +12,13 @@ export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     disabled = true;
 
+    //Pipes
+    today: number = Date.now();
+    title: string = "Learn Angular";
+    students: number = 21536;
+    price: number = 199.99;
+    completed: number = 0.789;
+
 
 
     // product: Product = this.model.getProductById(1) as Product;
