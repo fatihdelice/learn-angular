@@ -326,3 +326,12 @@ OR use [hidden] attribute
     <span *ngSwitchDefault>There are many products</span>
 </div>
 ```
+OR use string values
+```html
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductById(1)?.name">
+    <span *ngSwitchCase="productName">Samsung S5</span>
+    <span *ngSwitchCase="'Samsung S6'">Samsung S6</span>
+    <span *ngSwitchCase="'Samsung S7'">Samsung S6</span>
+    <span *ngSwitchDefault>Other Product</span>
+</div>
+```
