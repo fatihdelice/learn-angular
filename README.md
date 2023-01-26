@@ -116,7 +116,7 @@ onKeyUp($event: KeyboardEvent){
     }
 }
 ```
-If we want to print a value entered from the input to the console
+If we want to print a value entered from the input to the console:
 
 ```html
 <!-- component.html -->
@@ -138,5 +138,39 @@ OR
 ```ts
 onKeyUp(email: any){
     console.log(email);
+}
+```
+
+## Two Way Binding
+```ts
+// app.module.ts
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+    ...
+    imports: [
+        ...
+        FormsModule
+    ],
+    ...
+})
+
+// component.ts
+@component({
+    ...
+    template: `
+        <input [(ngModel)]="email" (keyup.enter)="onKeyUp()">
+        <br>
+        <span>{{email}}</span>
+    `
+    ...
+})
+
+export class AppComponent {
+    ...
+    email: "example@email.com";
+    onKeyUp(){
+        console.log(this.email);
+    }
 }
 ```
