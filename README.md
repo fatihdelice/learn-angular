@@ -304,7 +304,7 @@ OR
     </div>
 </ng-template>
 ```
-OR use [hidden] attribute
+OR use [hidden] directive
 ```html
 <!-- component.html -->
 <div [hidden]="model.getProducts().length>0" class="bg-primary text-white m-2 p-2">

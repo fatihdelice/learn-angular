@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProductComponent } from './product.component';
 import { SummaryPipe } from './summary.pipe';
+import { InputEmailDirective } from './input-email.directive';
 
 
 @NgModule({
   declarations: [
     ProductComponent,
-    SummaryPipe
+    SummaryPipe,
+    InputEmailDirective
   ],
   imports: [
     BrowserModule
