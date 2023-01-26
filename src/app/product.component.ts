@@ -86,4 +86,16 @@ export class ProductComponent {
     onKeyUp(email: any){
         console.log(email);
     }
+
+    addProduct() {
+        this.model.addProduct(new Product(6, "Samsung S10", "Smartphone", "5000"));
+    }
+
+    deleteProduct(product: Product) {
+        this.model.deleteProduct(product);
+    }
+
+    updateProduct(product: Product) {
+        product.name = "updated";
+    }
 }
