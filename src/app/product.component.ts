@@ -64,4 +64,16 @@ export class ProductComponent {
     onDivClicked(){
         console.log("Div clicked");        
     }
+
+    // onKeyUp($event: KeyboardEvent){
+    //     if($event.keyCode == 13){
+    //         console.log("Enter was pressed");
+    //     }
+    // }
+    // onKeyUp($event: any){
+    //     console.log($event.target.value);
+    // }
+    onKeyUp(email: any){
+        console.log(email);
+    }
 }
