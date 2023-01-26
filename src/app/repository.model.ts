@@ -18,4 +18,8 @@ export class ProductRepository{
     getProductById(id: number): Product | undefined {
         return this.products.find(p => p.id == id);
     }
+
+    getProductCount(): number {
+        return this.products.length;
+    }
 }

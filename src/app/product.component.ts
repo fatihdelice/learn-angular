@@ -20,9 +20,9 @@ export class ProductComponent {
     completed: number = 0.789;
 
     //Custom pipes
-    text = "lorem ipsum dolor sit, amet consectetur adipisicing elit."
+    text = "lorem ipsum dolor sit, amet consectetur adipisicing elit.";
 
-
+    productName: string = this.model.getProductById(1)?.name as string;
 
     // product: Product = this.model.getProductById(1) as Product;
 

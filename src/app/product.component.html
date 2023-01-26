@@ -6,7 +6,7 @@
     There are no products in the repository.
 </div> -->
 
-<div *ngIf="model.getProducts().length>0; then productList else noProducts"></div>
+<!-- <div *ngIf="model.getProducts().length>0; then productList else noProducts"></div>
 
 <ng-template #productList>
     <div class="bg-primary text-white m-2 p-2">
@@ -28,7 +28,7 @@
 
 <div [hidden]="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
     There are no products in the repository.
-</div>
+</div> -->
 
 <!-- <div>
     <h2>{{product.name}}</h2>
@@ -92,4 +92,18 @@
 <p>{{ completed }}</p>
 <p>{{ completed | percent }}</p> -->
 
-{{ text | summary:15 }}
+<!-- {{ text | summary:15 }} -->
+
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductCount()">
+    <span *ngSwitchCase="0">There are no products</span>
+    <span *ngSwitchCase="1">There are 1 products</span>
+    <span *ngSwitchCase="2">There are 2 products</span>
+    <span *ngSwitchDefault>There are many products</span>
+</div>
+
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductById(1)?.name">
+    <span *ngSwitchCase="productName">Samsung S5</span>
+    <span *ngSwitchCase="'Samsung S6'">Samsung S6</span>
+    <span *ngSwitchCase="'Samsung S7'">Samsung S6</span>
+    <span *ngSwitchDefault>Other Product</span>
+</div>

@@ -289,6 +289,7 @@ text = "lorem ipsum dolor sit, amet consectetur adipisicing elit."
 ```
 OR
 ```html
+<!-- component.html -->
 <div *ngIf="model.getProducts().length>0; then productList else noProducts"></div>
 
 <ng-template #productList>
@@ -305,11 +306,23 @@ OR
 ```
 OR use [hidden] attribute
 ```html
+<!-- component.html -->
 <div [hidden]="model.getProducts().length>0" class="bg-primary text-white m-2 p-2">
     There are {{model.getProducts().length}} products in the repository.
 </div>
 
 <div [hidden]="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
     There are no products in the repository.
+</div>
+```
+
+## NgSwitch
+```html
+<!-- component.html -->
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductCount()">
+    <span *ngSwitchCase="0">There are no products</span>
+    <span *ngSwitchCase="1">There are 1 products</span>
+    <span *ngSwitchCase="2">There are 2 products</span>
+    <span *ngSwitchDefault>There are many products</span>
 </div>
 ```
