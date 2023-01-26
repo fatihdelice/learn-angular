@@ -54,4 +54,14 @@ export class ProductComponent {
         }
     }
 
+
+    onSubmit($event: Event){
+        $event?.stopPropagation();
+        console.log("Form submitted");
+        console.log($event);
+    }
+
+    onDivClicked(){
+        console.log("Div clicked");        
+    }
 }

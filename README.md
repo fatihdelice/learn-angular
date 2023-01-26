@@ -52,3 +52,10 @@ ng g c component-name
 
 <span [ngStyle]="getStyles(1)">Angular</span>
 ```
+
+## Use Event Binding
+```html
+<button (click)="onSubmit()">Submit</button>
+
+<button (click)="onSubmit($event)">Submit</button>
+```
