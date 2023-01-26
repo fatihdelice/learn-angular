@@ -4,7 +4,7 @@ import { ProductComponent } from './product.component';
 import { SummaryPipe } from './summary.pipe';
 import { InputEmailDirective } from './input-email.directive';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
     AdminProductsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [ProductComponent]

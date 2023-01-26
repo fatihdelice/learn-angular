@@ -15,4 +15,8 @@ export class AdminProductsComponent {
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
   }
+
+  getSelected(product: any): boolean {
+    return product.name == this.selectedProduct; 
+  }
 }
