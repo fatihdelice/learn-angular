@@ -7,7 +7,7 @@ import { ProductRepository } from '../repository.model';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent {
-
+  selectedProduct: any;
   products;
   model: ProductRepository;
 
