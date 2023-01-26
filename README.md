@@ -382,3 +382,29 @@ OR
     </div>
 </ng-template>
 ```
+
+## Custom Directives
+```shell
+ng g d custom-directive-name
+```
+
+```html
+<!-- component.html -->
+<input type="text" appCustomDirectiveName>
+```
+
+```ts
+// custom-directive-name.directive.ts
+export class InputEmailDirective {
+    ...
+    @HostListener('focus') onFocus(){
+        console.log('focus');
+    }
+
+    @HostListener('blur') onBlur(){
+        console.log('blur');
+    }
+    ...
+
+}
+```
