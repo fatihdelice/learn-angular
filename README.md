@@ -276,3 +276,40 @@ export class SummaryPipe implements PipeTransform {
 text = "lorem ipsum dolor sit, amet consectetur adipisicing elit."
 ```
 
+## NgIf
+```html
+<!-- component.html -->
+<div *ngIf="model.getProducts().length>0">
+    There are {{model.getProducts().length}} products in the repository.
+</div>
+
+<div *ngIf="model.getProducts().length==0">
+    There are no products in the repository.
+</div>
+```
+OR
+```html
+<div *ngIf="model.getProducts().length>0; then productList else noProducts"></div>
+
+<ng-template #productList>
+    <div class="bg-primary text-white m-2 p-2">
+        There are {{model.getProducts().length}} products in the repository.
+    </div>
+</ng-template>
+
+<ng-template #noProducts>
+    <div class="bg-primary text-white m-2 p-2">
+        There are no products in the repository.
+    </div>
+</ng-template>
+```
+OR use [hidden] attribute
+```html
+<div [hidden]="model.getProducts().length>0" class="bg-primary text-white m-2 p-2">
+    There are {{model.getProducts().length}} products in the repository.
+</div>
+
+<div [hidden]="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
+    There are no products in the repository.
+</div>
+```
