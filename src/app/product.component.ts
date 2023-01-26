@@ -19,6 +19,9 @@ export class ProductComponent {
     price: number = 199.99;
     completed: number = 0.789;
 
+    //Custom pipes
+    text = "lorem ipsum dolor sit, amet consectetur adipisicing elit."
+
 
 
     // product: Product = this.model.getProductById(1) as Product;

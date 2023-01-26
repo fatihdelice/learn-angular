@@ -136,6 +136,7 @@ OR
 ```
 
 ```ts
+// component.ts
 onKeyUp(email: any){
     console.log(email);
 }
@@ -236,3 +237,42 @@ export class AppComponent {
     ...
 }
 ```
+
+## Custom Pipe
+```ts
+// app.module.ts
+@NgModule({
+  declarations: [
+    ...
+    SummaryPipe
+  ],
+  ...
+})
+```
+
+```ts
+// summary.pipe.ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+    name: 'summary'
+})
+export class SummaryPipe implements PipeTransform {
+  transform(value: string, limit?: number) {
+    if (!value) return null;
+    let _limit = (limit) ? limit : 20;
+    return value.substr(0, _limit) + '...';
+}
+}
+```
+
+```html
+<!-- component.html -->
+{{ text | summary:15 }}
+```
+
+```ts
+// component.ts
+text = "lorem ipsum dolor sit, amet consectetur adipisicing elit."
+```
+

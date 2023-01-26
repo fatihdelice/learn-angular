@@ -36,7 +36,7 @@
 <input (keyup.enter)="onKeyUp($event)">
 <input #email (keyup.enter)="onKeyUp(email.value)"> -->
 
-
+<!-- 
 <h4>Lower-Upper-Title CasePipe</h4>
 <p>{{ title }}</p>
 <p>{{ title | lowercase }}</p>
@@ -62,4 +62,6 @@
 
 <h4>Percent Pipe</h4>
 <p>{{ completed }}</p>
-<p>{{ completed | percent }}</p>
+<p>{{ completed | percent }}</p> -->
+
+{{ text | summary:15 }}
