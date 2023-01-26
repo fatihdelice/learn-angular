@@ -326,12 +326,27 @@ OR use [hidden] attribute
     <span *ngSwitchDefault>There are many products</span>
 </div>
 ```
-OR use string values
+OR If we want to use it with a string value
 ```html
+<!-- component.html -->
 <div class="bg-info m-2 p-2" [ngSwitch]="model.getProductById(1)?.name">
     <span *ngSwitchCase="productName">Samsung S5</span>
     <span *ngSwitchCase="'Samsung S6'">Samsung S6</span>
     <span *ngSwitchCase="'Samsung S7'">Samsung S6</span>
     <span *ngSwitchDefault>Other Product</span>
 </div>
+```
+
+## NgFor
+```html
+<!-- component.html -->
+<ul>
+    <li *ngFor="let product of model.getProducts(); first as isFirst; last as isLast; odd as isOdd; even as isEven">
+        {{ product.id }} - {{product.name}}
+        <span *ngIf="isFirst">first item</span>
+        <span *ngIf="isLast">last item</span>
+        <span *ngIf="isOdd">odd item</span>
+        <span *ngIf="isEven">even item</span>
+    </li>
+</ul>
 ```
