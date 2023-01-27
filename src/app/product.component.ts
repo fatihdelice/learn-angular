@@ -24,6 +24,14 @@ export class ProductComponent {
 
     productName: string = this.model.getProductById(1)?.name as string;
 
+    newProduct: Product = new Product();
+    get jsonProduct() {
+        return JSON.stringify(this.newProduct);
+    }
+    addProduct(p: Product){
+        console.log("New product: " + this.jsonProduct);        
+    }
+
     // product: Product = this.model.getProductById(1) as Product;
 
     getClasses(id: number): string {
@@ -87,9 +95,9 @@ export class ProductComponent {
         console.log(email);
     }
 
-    addProduct() {
-        this.model.addProduct(new Product(6, "Samsung S10", "Smartphone", "5000"));
-    }
+    // addProduct() {
+    //     this.model.addProduct(new Product(6, "Samsung S10", "Smartphone", "5000"));
+    // }
 
     deleteProduct(product: Product) {
         this.model.deleteProduct(product);
