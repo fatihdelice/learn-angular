@@ -194,7 +194,8 @@
                         <label>Description</label>
                         <textarea required [(ngModel)]="newProduct.description" name="description"
                             #description="ngModel" class="form-control"></textarea>
-                        <div class="alert alert-danger" *ngIf="(formSubmitted || description.dirty) && description.invalid">
+                        <div class="alert alert-danger"
+                            *ngIf="(formSubmitted || description.dirty) && description.invalid">
                             <ul>
                                 <li *ngFor="let error of getValidationErrors(description)">
                                     {{error}}
@@ -227,7 +228,9 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="formSubmitted && form.invalid"
+                        [class.btn-secondary]="formSubmitted && form.invalid">Submit
+                    </button>
                 </form>
             </div>
         </div>
