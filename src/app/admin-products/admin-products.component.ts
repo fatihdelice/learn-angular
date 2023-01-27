@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductRepository } from '../repository.model';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'admin-products',
@@ -7,16 +8,20 @@ import { ProductRepository } from '../repository.model';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent {
-  selectedProduct: any;
   products;
+  selectedProduct: Product | null | undefined;
   model: ProductRepository;
 
-  constructor() { 
+  constructor() {
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
   }
 
-  getSelected(product: any): boolean {
-    return product.name == this.selectedProduct; 
+  getSelected(product: Product): boolean {
+    return product == this.selectedProduct;
+  }
+
+  editProduct(product: Product) {
+    this.selectedProduct = product;
   }
 }
