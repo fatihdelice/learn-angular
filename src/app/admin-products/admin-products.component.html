@@ -34,21 +34,21 @@
       <div class="col-md-6" *ngIf="selectedProduct">
         <div class="form-group">
           <label>Product Name</label>
-          <input #pName [value]="selectedProduct.name" type="text" class="form-control">
+          <input [(ngModel)]="selectedProduct.name" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label>Price</label>
-          <input #pPrice [value]="selectedProduct.price"  type="text" class="form-control">
+          <input [(ngModel)]="selectedProduct.price" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label>Image</label>
-          <input #pImageUrl [value]="selectedProduct.imageUrl"  type="text" class="form-control">
+          <input [(ngModel)]="selectedProduct.imageUrl" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label>Description</label>
-          <textarea #pDescription [value]="selectedProduct.description"  type="text" class="form-control"></textarea>
+          <textarea [(ngModel)]="selectedProduct.description" type="text" class="form-control"></textarea>
         </div>
-        <button class="btn btn-primary" (click)="SaveChanges(pName.value,pDescription.value,pPrice.value,pImageUrl.value)">Save Changes</button>
+        <button class="btn btn-primary" (click)="SaveChanges()">Save Changes</button>
       </div>
     </div>
   </div>
