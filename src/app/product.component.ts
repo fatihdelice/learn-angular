@@ -32,6 +32,32 @@ export class ProductComponent {
         console.log("New product: " + this.jsonProduct);        
     }
 
+    log(x: any) {
+        console.log(x);
+    }
+
+    getValidationErrors(state: any){
+        let ctrlName: string = state.name;
+        let messages: string[] = [];
+
+        if(state.errors){
+            for (let errorName in state.errors){
+                switch(errorName){
+                    case "required":
+                        messages.push(`You must enter a ${ctrlName}`);
+                        break;
+                    case "minlength":
+                        messages.push(`Min. 3 characters for ${ctrlName}`);
+                        break;
+                    case "pattern":
+                        messages.push(`${ctrlName} contains illegal characters`);
+                        break;
+                }
+            }
+        }
+        return messages;
+    }
+
     // product: Product = this.model.getProductById(1) as Product;
 
     getClasses(id: number): string {
