@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductRepository } from '../repository.model';
 import { Product } from '../product.model';
 
@@ -8,14 +8,15 @@ import { Product } from '../product.model';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent {
-  products;
-  selectedProduct: Product | null | undefined;
-  model: ProductRepository;
 
-  constructor() {
+  products;
+  model: ProductRepository;
+  selectedProduct: Product | any;
+
+  constructor() { 
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
-  }
+  } 
 
   getSelected(product: Product): boolean {
     return product == this.selectedProduct;
@@ -24,4 +25,14 @@ export class AdminProductsComponent {
   editProduct(product: Product) {
     this.selectedProduct = product;
   }
+
+  SaveChanges(name: any, description: any, price: any, imageUrl: any) {
+    const p = this.model.getProductById(this.selectedProduct.id);
+    p!.name = name;
+    p!.description = description;
+    p!.price = price;
+    p!.imageUrl = imageUrl;
+    this.selectedProduct = null;
+  }
+
 }
