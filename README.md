@@ -408,3 +408,38 @@ export class InputEmailDirective {
 
 }
 ```
+
+## NgForm
+```html
+<!-- component.html -->
+<form #form="ngForm" (ngSubmit)="submitForm(form)">
+    ...
+    <div class="form-group">
+        <label>Name</label>
+        <input required minlength="3" maxlength="10" pattern="^[A-Za-z ]+$"
+            [(ngModel)]="newProduct.name" name="name" #name="ngModel" type="text" class="form-control"
+            (change)="log(name)">
+        <div class="alert alert-danger" *ngIf="(formSubmitted || name.dirty) && name.invalid">
+            <p *ngFor="let error of getValidationErrors(name)">
+                {{error}}
+            </p>
+        </div>
+    </div>
+    ...
+</form>
+```
+
+```ts
+// component.ts
+formSubmitted: boolean = false;
+
+submitForm(form: NgForm){
+    this.formSubmitted = true;
+    if(form.valid){
+        this.addProduct(this.newProduct);
+        this.newProduct = new Product();
+        form.reset();
+        this.formSubmitted = false;
+    }
+}
+```
