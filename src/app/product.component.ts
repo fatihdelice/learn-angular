@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
 import { NgForm } from '@angular/forms';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app',
@@ -15,13 +15,23 @@ export class ProductComponent {
     disabled = true;
 
     //Reactive forms
-    name = new FormControl('Samsung S5');
-    description = new FormControl('Good Telephone');
-    price = new FormControl('1000');
-    imageUrl = new FormControl('1.jpg');
+    productForm = new FormGroup({
+        name: new FormControl('Samsung S5'),
+        description: new FormControl('Good Telephone'),
+        price: new FormControl('1000'),
+        imageUrl: new FormControl('1.jpg'),
 
-    updateName(){
-        this.name.setValue('Samsung S6');
+    });
+
+    onSubmitForm(){
+        console.log(this.productForm.value);
+    }
+
+    updateProductForm(){
+        this.productForm.patchValue({
+            name: 'Iphone X',
+            price: '2000'
+        });
     }
 
     //Pipes
