@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
 import { NgForm } from '@angular/forms';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app',
@@ -16,12 +16,16 @@ export class ProductComponent {
 
     //Reactive forms
     productForm = new FormGroup({
-        name: new FormControl('Samsung S5'),
-        description: new FormControl('Good Telephone'),
-        price: new FormControl('1000'),
-        imageUrl: new FormControl('1.jpg'),
+        name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z ]*')]),
+        description: new FormControl('', Validators.required),
+        price: new FormControl('', Validators.required),
+        imageUrl: new FormControl('', Validators.required),
 
     });
+
+    get name() {
+        return this.productForm.get('name');
+    }
 
     onSubmitForm(){
         console.log(this.productForm.value);
