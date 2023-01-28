@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
 import { NgForm } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app',
@@ -13,12 +14,22 @@ export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     disabled = true;
 
+    //Reactive forms
+    name = new FormControl('Samsung S5');
+    description = new FormControl('Good Telephone');
+    price = new FormControl('1000');
+    imageUrl = new FormControl('1.jpg');
+
+    updateName(){
+        this.name.setValue('Samsung S6');
+    }
+
     //Pipes
-    today: number = Date.now();
-    title: string = "Learn Angular";
-    students: number = 21536;
-    price: number = 199.99;
-    completed: number = 0.789;
+    // today: number = Date.now();
+    // title: string = "Learn Angular";
+    // students: number = 21536;
+    // price: number = 199.99;
+    // completed: number = 0.789;
 
     //Custom pipes
     text = "lorem ipsum dolor sit, amet consectetur adipisicing elit.";
