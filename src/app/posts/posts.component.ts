@@ -9,6 +9,7 @@ import { PostService } from '../services/post.service';
 export class PostsComponent implements OnInit {
 
   posts: [any] | undefined;
+  error: any;
 
   constructor(private postService: PostService) { }
 
@@ -16,7 +17,7 @@ export class PostsComponent implements OnInit {
     this.postService.getPosts()
       .subscribe(response => {
         this.posts = <[any]>response;
-      });
+      }, error => this.error = error);
   }
 
 
@@ -43,7 +44,7 @@ export class PostsComponent implements OnInit {
       console.log(response);
       let index = this.posts!.indexOf(post);
       this.posts?.splice(index, 1);
-    });
+    }, error => this.error = error);
   }
 
 }

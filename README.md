@@ -445,10 +445,12 @@ submitForm(form: NgForm){
 ```
 
 ## Angular Services - NgService
+Create a service
 ```shell
 ng g s services/<service-name>
 ```
 
+Use the service in a component
 ```ts
 // <service-name>.service.ts
 import { HttpClient } from '@angular/common/http';
