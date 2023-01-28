@@ -3,6 +3,7 @@ import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
 import { NgForm } from '@angular/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ImageValidators } from './image.validators';
 
 @Component({
     selector: 'app',
@@ -16,10 +17,10 @@ export class ProductComponent {
 
     //Reactive forms
     productForm = new FormGroup({
-        name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z ]*')]),
+        name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[a-zA-Z ]*')]),
         description: new FormControl('', Validators.required),
         price: new FormControl('', Validators.required),
-        imageUrl: new FormControl('', Validators.required),
+        imageUrl: new FormControl('', [Validators.required, ImageValidators.isValidExtension]),
 
     });
 
@@ -27,11 +28,15 @@ export class ProductComponent {
         return this.productForm.get('name');
     }
 
-    onSubmitForm(){
+    get imageUrl() {
+        return this.productForm.get('imageUrl');
+    }
+
+    onSubmitForm() {
         console.log(this.productForm.value);
     }
 
-    updateProductForm(){
+    updateProductForm() {
         this.productForm.patchValue({
             name: 'Iphone X',
             price: '2000'
@@ -54,15 +59,15 @@ export class ProductComponent {
     get jsonProduct() {
         return JSON.stringify(this.newProduct);
     }
-    addProduct(p: Product){
-        console.log("New product: " + this.jsonProduct);        
+    addProduct(p: Product) {
+        console.log("New product: " + this.jsonProduct);
     }
 
     log(x: any) {
         console.log(x);
     }
 
-    getformValidationErrors(form: NgForm): string[]{   
+    getformValidationErrors(form: NgForm): string[] {
         let messages: string[] = [];
 
         Object.keys(form.controls).forEach(k => {
@@ -76,13 +81,13 @@ export class ProductComponent {
 
     }
 
-    getValidationErrors(state: any){
+    getValidationErrors(state: any) {
         let ctrlName: string = state.name;
         let messages: string[] = [];
 
-        if(state.errors){
-            for (let errorName in state.errors){
-                switch(errorName){
+        if (state.errors) {
+            for (let errorName in state.errors) {
+                switch (errorName) {
                     case "required":
                         messages.push(`You must enter a ${ctrlName}`);
                         break;
@@ -100,10 +105,10 @@ export class ProductComponent {
 
     formSubmitted: boolean = false;
 
-    submitForm(form: NgForm){
-        console.log(form);     
+    submitForm(form: NgForm) {
+        console.log(form);
         this.formSubmitted = true;
-        if(form.valid){
+        if (form.valid) {
             this.addProduct(this.newProduct);
             this.newProduct = new Product();
             form.reset();
@@ -154,14 +159,14 @@ export class ProductComponent {
     }
 
 
-    onSubmit($event: Event){
+    onSubmit($event: Event) {
         $event?.stopPropagation();
         console.log("Form submitted");
         console.log($event);
     }
 
-    onDivClicked(){
-        console.log("Div clicked");        
+    onDivClicked() {
+        console.log("Div clicked");
     }
 
     // onKeyUp($event: KeyboardEvent){
@@ -172,7 +177,7 @@ export class ProductComponent {
     // onKeyUp($event: any){
     //     console.log($event.target.value);
     // }
-    onKeyUp(email: any){
+    onKeyUp(email: any) {
         console.log(email);
     }
 
