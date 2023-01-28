@@ -464,13 +464,16 @@ import { HttpClientModule } from '@angular/common/http';
 // component.ts
 import { HttpClient } from '@angular/common/http';
 
-posts: any;
-  
-constructor(private http: HttpClient) {
-http.get('https://jsonplaceholder.typicode.com/posts')
-    .subscribe(response => {
-    this.posts = response;
-    });
+})
+export class PostsComponent {
+    posts: any;
+    
+    constructor(private http: HttpClient) {
+    http.get('https://jsonplaceholder.typicode.com/posts')
+        .subscribe(response => {
+        this.posts = response;
+        });
+    }
 }
 ```
 
