@@ -35,12 +35,20 @@ export class PostsComponent {
     this.http.put(this.url+'/'+post.id, JSON.stringify(post)).subscribe(response => {
       console.log(response);
     });
-    
+
     // this.http.patch(this.url+'/'+post.id, JSON.stringify({
     //   title: 'UPDATED'
     // })).subscribe(response => {
     //   console.log(response);
     // });
+  }
+
+  deletePost(post: any) {
+    this.http.delete(this.url+'/'+post.id).subscribe(response => {
+      console.log(response);
+      let index = this.posts!.indexOf(post);
+      this.posts?.splice(index, 1);
+    });
   }
 
 }

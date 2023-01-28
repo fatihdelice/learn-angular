@@ -508,6 +508,10 @@ export class PostsComponent {
 ```
 
 ## Angular Services (UPDATE Request)
+```html
+<!-- component.html -->
+<button (click)="updatePost(post)">Update</button>
+```
 - PUT Request Methods
 ```ts
 // component.ts
@@ -536,8 +540,19 @@ export class PostsComponent {
   }
 }
 ```
-
+## Angular Services (DELETE Request)
 ```html
 <!-- component.html -->
-<button (click)="updatePost(post)">Update</button>
+<button (click)="deletePost(post)">Delete</button>
+```
+
+```ts
+// component.ts
+deletePost(post: any) {
+    this.http.delete(this.url+'/'+post.id).subscribe(response => {
+        console.log(response);
+        let index = this.posts!.indexOf(post);
+        this.posts?.splice(index, 1);
+    });
+}
 ```
