@@ -443,3 +443,42 @@ submitForm(form: NgForm){
     }
 }
 ```
+
+## Angular Services (GET Request)
+```ts
+// app.module.ts
+import { HttpClientModule } from '@angular/common/http';
+...
+@NgModule({
+    ...
+    imports: [
+        ...
+        HttpClientModule, 
+        ...
+    ],
+    ...
+})
+```
+
+```ts
+// component.ts
+import { HttpClient } from '@angular/common/http';
+
+posts: any;
+  
+constructor(private http: HttpClient) {
+http.get('https://jsonplaceholder.typicode.com/posts')
+    .subscribe(response => {
+    this.posts = response;
+    });
+}
+```
+
+```html
+<!-- component.html -->
+<ul>
+    <li *ngFor="let post of posts">
+        {{post.title}}
+    </li>
+</ul>
+```
