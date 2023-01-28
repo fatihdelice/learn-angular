@@ -30,4 +30,17 @@ export class PostsComponent {
     })
   }
 
+  updatePost(post: any) {
+    post.title = 'UPDATED';
+    this.http.put(this.url+'/'+post.id, JSON.stringify(post)).subscribe(response => {
+      console.log(response);
+    });
+    
+    // this.http.patch(this.url+'/'+post.id, JSON.stringify({
+    //   title: 'UPDATED'
+    // })).subscribe(response => {
+    //   console.log(response);
+    // });
+  }
+
 }

@@ -485,3 +485,59 @@ export class PostsComponent {
     </li>
 </ul>
 ```
+
+## Angular Services (POST Request)
+```ts
+// component.ts
+export class PostsComponent {
+    createPost(input: HTMLInputElement) {
+        const post = {title: input.value};
+        input.value = '';
+
+        this.http.post(this.url, JSON.stringify(post)).subscribe(response => {
+            this.posts?.splice(0, 0, post);
+            console.log(response);
+        })
+    }
+}
+```
+
+```html
+<!-- component.html -->
+<input type="text" (keyup.enter)="createPost(input)" #input>
+```
+
+## Angular Services (UPDATE Request)
+- PUT Request Methods
+```ts
+// component.ts
+export class PostsComponent {
+    updatePost(post: any) {
+    post.title = 'UPDATED';
+    this.http.put(this.url+'/'+post.id, JSON.stringify(post)).subscribe(response => {
+      console.log(response);
+    });
+  }
+}
+```
+
+- PATCH Request Methods
+```ts
+// component.ts
+export class PostsComponent {
+    updatePost(post: any) {
+    post.title = 'UPDATED';
+    
+    this.http.patch(this.url+'/'+post.id, JSON.stringify({
+      title: 'UPDATED'
+    })).subscribe(response => {
+      console.log(response);
+    });
+  }
+}
+```
+
+```html
+<!-- component.html -->
+<button (click)="updatePost(post)">Update</button>
+```
